@@ -98,6 +98,23 @@
                         </button>
                     </div>
                 </div>
+
+                <!-- Data Management Section -->
+                <div class="data-management">
+                    <h2>Data Management</h2>
+                    <p class="data-info">Export your progress to backup or transfer to another device</p>
+                    <div class="data-buttons">
+                        <button class="btn-export" onclick="exportProgressToJSON()">
+                            <span class="btn-icon">💾</span>
+                            Export Progress (JSON)
+                        </button>
+                        <button class="btn-import" onclick="document.getElementById('jsonFileInput').click()">
+                            <span class="btn-icon">📂</span>
+                            Import Progress (JSON)
+                        </button>
+                        <input type="file" id="jsonFileInput" accept=".json" style="display: none;" onchange="importProgressFromJSON(event)">
+                    </div>
+                </div>
             </section>
 
             <!-- Scenarios Screen -->

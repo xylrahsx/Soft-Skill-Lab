@@ -241,6 +241,73 @@ body {
     font-size: 0.95em;
 }
 
+/* Data Management Section */
+.data-management {
+    margin-top: 40px;
+    padding: 30px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+}
+
+.data-management h2 {
+    margin-bottom: 10px;
+    color: var(--dark);
+}
+
+.data-info {
+    color: var(--gray);
+    margin-bottom: 20px;
+    font-size: 0.95em;
+}
+
+.data-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn-export,
+.btn-import {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow);
+}
+
+.btn-export {
+    background: linear-gradient(135deg, var(--success) 0%, #38ef7d 100%);
+    color: white;
+}
+
+.btn-export:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    background: linear-gradient(135deg, #0f8a7d 0%, #2dd46e 100%);
+}
+
+.btn-import {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+}
+
+.btn-import:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    background: linear-gradient(135deg, var(--primary-dark) 0%, #6b3d94 100%);
+}
+
+.btn-icon {
+    font-size: 1.2em;
+}
+
 /* Scenario Cards */
 .scenario-selector {
     display: grid;
