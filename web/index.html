@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soft Skills Lab - Communication Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🎯 Soft Skills Lab</h1>
+            <p class="subtitle">Communication Style Simulator</p>
+        </header>
+
+        <!-- Welcome Screen -->
+        <div id="welcomeScreen" class="screen active">
+            <div class="welcome-content">
+                <h2>Welcome!</h2>
+                <p>This simulator helps you practice different communication styles and understand their impact on team dynamics.</p>
+                <p>You'll experience realistic scenarios where your communication choices affect:</p>
+                <ul>
+                    <li>📊 Team Productivity</li>
+                    <li>😊 Team Morale</li>
+                    <li>🤝 Team Trust</li>
+                </ul>
+                <button class="btn btn-primary" onclick="startSimulation()">Start Simulation</button>
+            </div>
+        </div>
+
+        <!-- Scenario Screen -->
+        <div id="scenarioScreen" class="screen">
+            <div class="scenario-box">
+                <h2>📋 Scenario</h2>
+                <p class="scenario-text">
+                    You're leading a team meeting to discuss an upcoming project deadline.
+                    The project is behind schedule, and tough decisions need to be made.
+                </p>
+                <div class="team-mood">
+                    <strong>Team Mood Today:</strong>
+                    <span id="teamPersonality"></span>
+                </div>
+            </div>
+
+            <div class="choices-box">
+                <h3>Choose Your Communication Style:</h3>
+                <div class="choice-buttons">
+                    <button class="choice-btn" onclick="makeChoice(1)" data-style="authoritarian">
+                        <div class="choice-title">👔 Authoritarian</div>
+                        <div class="choice-description">Direct, commanding approach - "Do as I say"</div>
+                    </button>
+                    <button class="choice-btn" onclick="makeChoice(2)" data-style="collaborative">
+                        <div class="choice-title">🤝 Collaborative</div>
+                        <div class="choice-description">Team-oriented, inclusive - "Let's work together"</div>
+                    </button>
+                    <button class="choice-btn" onclick="makeChoice(3)" data-style="passive">
+                        <div class="choice-title">😌 Passive</div>
+                        <div class="choice-description">Non-confrontational - "Whatever you think is best"</div>
+                    </button>
+                    <button class="choice-btn" onclick="makeChoice(4)" data-style="assertive">
+                        <div class="choice-title">💪 Assertive</div>
+                        <div class="choice-description">Clear, respectful, confident - "Here's my view, what's yours?"</div>
+                    </button>
+                    <button class="choice-btn" onclick="makeChoice(5)" data-style="manipulative">
+                        <div class="choice-title">🎭 Manipulative</div>
+                        <div class="choice-description">Indirect, controlling - "You might want to consider..."</div>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="resultsScreen" class="screen">
+            <div class="reaction-box">
+                <h2>🎬 Team Reaction</h2>
+                <p id="reactionText" class="reaction-text"></p>
+            </div>
+
+            <div class="metrics-box">
+                <h3>📊 Performance Metrics</h3>
+                <div class="metric">
+                    <div class="metric-label">Productivity</div>
+                    <div class="metric-bar-container">
+                        <div id="productivityBar" class="metric-bar"></div>
+                    </div>
+                    <div id="productivityValue" class="metric-value">0%</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">Morale</div>
+                    <div class="metric-bar-container">
+                        <div id="moraleBar" class="metric-bar"></div>
+                    </div>
+                    <div id="moraleValue" class="metric-value">0%</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">Trust</div>
+                    <div class="metric-bar-container">
+                        <div id="trustBar" class="metric-bar"></div>
+                    </div>
+                    <div id="trustValue" class="metric-value">0%</div>
+                </div>
+                <div class="overall-score">
+                    <strong>Overall Score:</strong>
+                    <span id="overallScore" class="score-value">0%</span>
+                    <span id="scoreRating" class="score-rating"></span>
+                </div>
+            </div>
+
+            <div class="feedback-box">
+                <h3>💬 Feedback</h3>
+                <p id="feedbackText" class="feedback-text"></p>
+            </div>
+
+            <div class="suggestion-box">
+                <h3>💡 Suggestion for Improvement</h3>
+                <p id="suggestionText" class="suggestion-text"></p>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-primary" onclick="tryAgain()">Try Again</button>
+                <button class="btn btn-secondary" onclick="showSummary()">View Session Summary</button>
+            </div>
+        </div>
+
+        <!-- Summary Screen -->
+        <div id="summaryScreen" class="screen">
+            <div class="summary-content">
+                <h2>📈 Session Summary</h2>
+                <div id="summaryStats" class="summary-stats"></div>
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="tryAgain()">Continue Practicing</button>
+                    <button class="btn btn-secondary" onclick="location.reload()">Start New Session</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

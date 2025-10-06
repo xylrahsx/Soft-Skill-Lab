@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soft Skills Lab Pro - Advanced Communication Simulator</title>
+    <link rel="stylesheet" href="styles-advanced.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2>🎯 Soft Skills Lab</h2>
+                <p class="version">Pro Edition</p>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item active" data-screen="dashboard">
+                    <span class="icon">📊</span>
+                    <span>Dashboard</span>
+                </li>
+                <li class="nav-item" data-screen="scenarios">
+                    <span class="icon">🎬</span>
+                    <span>Scenarios</span>
+                </li>
+                <li class="nav-item" data-screen="analytics">
+                    <span class="icon">📈</span>
+                    <span>Analytics</span>
+                </li>
+                <li class="nav-item" data-screen="achievements">
+                    <span class="icon">🏆</span>
+                    <span>Achievements</span>
+                </li>
+                <li class="nav-item" data-screen="learning">
+                    <span class="icon">📚</span>
+                    <span>Learning Path</span>
+                </li>
+            </ul>
+            <div class="user-profile">
+                <div class="avatar">👤</div>
+                <div class="user-info">
+                    <div class="username">Communication Master</div>
+                    <div class="level" id="userLevel">Level 1</div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Dashboard Screen -->
+            <section id="dashboardScreen" class="content-screen active">
+                <header class="screen-header">
+                    <h1>Welcome Back! 👋</h1>
+                    <p class="subtitle">Continue your journey to becoming a better communicator</p>
+                </header>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🎯</div>
+                        <div class="stat-value" id="totalSimulations">0</div>
+                        <div class="stat-label">Simulations</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-value" id="avgScore">0%</div>
+                        <div class="stat-label">Avg Score</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🔥</div>
+                        <div class="stat-value" id="currentStreak">0</div>
+                        <div class="stat-label">Day Streak</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🏆</div>
+                        <div class="stat-value" id="totalAchievements">0/15</div>
+                        <div class="stat-label">Achievements</div>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <h2>Quick Start</h2>
+                    <div class="action-buttons-grid">
+                        <button class="action-card" onclick="startQuickScenario('easy')">
+                            <span class="action-icon">🟢</span>
+                            <h3>Easy Scenario</h3>
+                            <p>Build confidence with straightforward situations</p>
+                        </button>
+                        <button class="action-card" onclick="startQuickScenario('medium')">
+                            <span class="action-icon">🟡</span>
+                            <h3>Medium Challenge</h3>
+                            <p>Test your skills with complex dynamics</p>
+                        </button>
+                        <button class="action-card" onclick="startQuickScenario('hard')">
+                            <span class="action-icon">🔴</span>
+                            <h3>Hard Challenge</h3>
+                            <p>Master difficult conversations</p>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Scenarios Screen -->
+            <section id="scenariosScreen" class="content-screen">
+                <header class="screen-header">
+                    <h1>Choose Your Scenario</h1>
+                    <p class="subtitle">Select a situation to practice</p>
+                </header>
+
+                <div class="scenario-selector">
+                    <div class="scenario-card" onclick="selectScenario('deadline', 'medium')">
+                        <div class="scenario-difficulty medium">Medium</div>
+                        <div class="scenario-icon">⏰</div>
+                        <h3>Project Deadline Crisis</h3>
+                        <p>The project is behind schedule. Navigate team pressure and tight deadlines.</p>
+                        <div class="scenario-stats">
+                            <span>📊 Productivity Focus</span>
+                            <span>⏱️ 3-5 turns</span>
+                        </div>
+                    </div>
+
+                    <div class="scenario-card" onclick="selectScenario('conflict', 'hard')">
+                        <div class="scenario-difficulty hard">Hard</div>
+                        <div class="scenario-icon">⚡</div>
+                        <h3>Team Conflict Resolution</h3>
+                        <p>Two team members are in disagreement. Mediate effectively without taking sides.</p>
+                        <div class="scenario-stats">
+                            <span>🤝 Trust Focus</span>
+                            <span>⏱️ 4-6 turns</span>
+                        </div>
+                    </div>
+
+                    <div class="scenario-card" onclick="selectScenario('review', 'medium')">
+                        <div class="scenario-difficulty medium">Medium</div>
+                        <div class="scenario-icon">📋</div>
+                        <h3>Performance Review</h3>
+                        <p>Deliver constructive feedback to an underperforming team member.</p>
+                        <div class="scenario-stats">
+                            <span>😊 Morale Focus</span>
+                            <span>⏱️ 3-4 turns</span>
+                        </div>
+                    </div>
+
+                    <div class="scenario-card" onclick="selectScenario('budget', 'hard')">
+                        <div class="scenario-difficulty hard">Hard</div>
+                        <div class="scenario-icon">💰</div>
+                        <h3>Budget Cut Announcement</h3>
+                        <p>Communicate difficult news about budget cuts while maintaining team morale.</p>
+                        <div class="scenario-stats">
+                            <span>😊 Morale Focus</span>
+                            <span>⏱️ 4-5 turns</span>
+                        </div>
+                    </div>
+
+                    <div class="scenario-card" onclick="selectScenario('innovation', 'easy')">
+                        <div class="scenario-difficulty easy">Easy</div>
+                        <div class="scenario-icon">💡</div>
+                        <h3>Innovation Workshop</h3>
+                        <p>Lead a brainstorming session to encourage creative thinking.</p>
+                        <div class="scenario-stats">
+                            <span>🎨 Creativity Focus</span>
+                            <span>⏱️ 2-3 turns</span>
+                        </div>
+                    </div>
+
+                    <div class="scenario-card" onclick="selectScenario('crisis', 'hard')">
+                        <div class="scenario-difficulty hard">Hard</div>
+                        <div class="scenario-icon">🚨</div>
+                        <h3>Crisis Management</h3>
+                        <p>A critical system failure requires immediate team coordination.</p>
+                        <div class="scenario-stats">
+                            <span>⚡ Speed Focus</span>
+                            <span>⏱️ 3-4 turns</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Simulation Screen -->
+            <section id="simulationScreen" class="content-screen">
+                <div class="simulation-container">
+                    <div class="simulation-header">
+                        <h2 id="scenarioTitle">Scenario</h2>
+                        <div class="turn-indicator">Turn <span id="currentTurn">1</span> of <span id="totalTurns">3</span></div>
+                    </div>
+
+                    <div class="conversation-area" id="conversationArea">
+                        <!-- Dynamic conversation will be inserted here -->
+                    </div>
+
+                    <div class="response-selector">
+                        <h3>Choose Your Response:</h3>
+                        <div id="responseOptions" class="response-options">
+                            <!-- Response buttons will be dynamically generated -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results Screen -->
+            <section id="resultsAdvancedScreen" class="content-screen">
+                <div class="results-container">
+                    <div class="results-header">
+                        <h1>Simulation Complete! 🎉</h1>
+                        <div class="final-score" id="finalScore">0%</div>
+                    </div>
+
+                    <div class="results-grid">
+                        <div class="metrics-panel">
+                            <h3>Performance Breakdown</h3>
+                            <canvas id="metricsChart"></canvas>
+                        </div>
+
+                        <div class="communication-analysis">
+                            <h3>📊 Communication Analysis</h3>
+                            <div id="analysisContent"></div>
+                        </div>
+                    </div>
+
+                    <div class="detailed-feedback">
+                        <h3>💬 Detailed Feedback</h3>
+                        <div id="detailedFeedback"></div>
+                    </div>
+
+                    <div class="achievements-earned" id="achievementsEarned" style="display: none;">
+                        <h3>🏆 New Achievements!</h3>
+                        <div id="newAchievements"></div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" onclick="navigateToScreen('scenarios')">Try Another Scenario</button>
+                        <button class="btn btn-secondary" onclick="navigateToScreen('analytics')">View Analytics</button>
+                        <button class="btn btn-secondary" onclick="navigateToScreen('dashboard')">Back to Dashboard</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Analytics Screen -->
+            <section id="analyticsScreen" class="content-screen">
+                <header class="screen-header">
+                    <h1>Your Analytics 📈</h1>
+                    <p class="subtitle">Track your progress and identify areas for improvement</p>
+                </header>
+
+                <div class="analytics-grid">
+                    <div class="chart-panel">
+                        <h3>Performance Trends</h3>
+                        <canvas id="trendsChart"></canvas>
+                    </div>
+
+                    <div class="chart-panel">
+                        <h3>Communication Style Distribution</h3>
+                        <canvas id="styleChart"></canvas>
+                    </div>
+
+                    <div class="chart-panel full-width">
+                        <h3>Score History</h3>
+                        <canvas id="historyChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="insights-panel">
+                    <h3>🎯 Key Insights</h3>
+                    <div id="insightsContent"></div>
+                </div>
+            </section>
+
+            <!-- Achievements Screen -->
+            <section id="achievementsScreen" class="content-screen">
+                <header class="screen-header">
+                    <h1>Achievements 🏆</h1>
+                    <p class="subtitle">Unlock badges by mastering different communication skills</p>
+                </header>
+
+                <div class="achievements-grid" id="achievementsGrid">
+                    <!-- Achievements will be dynamically generated -->
+                </div>
+            </section>
+
+            <!-- Learning Path Screen -->
+            <section id="learningScreen" class="content-screen">
+                <header class="screen-header">
+                    <h1>Your Learning Path 📚</h1>
+                    <p class="subtitle">Personalized recommendations based on your performance</p>
+                </header>
+
+                <div class="learning-path-container">
+                    <div class="strength-weakness-panel">
+                        <div class="strength-panel">
+                            <h3>💪 Your Strengths</h3>
+                            <div id="strengthsList"></div>
+                        </div>
+                        <div class="weakness-panel">
+                            <h3>📈 Areas for Growth</h3>
+                            <div id="weaknessesList"></div>
+                        </div>
+                    </div>
+
+                    <div class="recommendations-panel">
+                        <h3>🎯 Recommended Next Steps</h3>
+                        <div id="recommendationsList"></div>
+                    </div>
+
+                    <div class="resources-panel">
+                        <h3>📖 Learning Resources</h3>
+                        <div id="resourcesList"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script-advanced.js"></script>
+</body>
+</html>

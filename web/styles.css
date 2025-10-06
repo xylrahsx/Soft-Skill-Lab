@@ -1,0 +1,473 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 900px;
+    width: 100%;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+    animation: fadeIn 1s ease-in;
+}
+
+.header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.subtitle {
+    font-size: 1.2em;
+    opacity: 0.9;
+}
+
+/* Screens */
+.screen {
+    display: none;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.screen.active {
+    display: block;
+}
+
+/* Welcome Screen */
+.welcome-content {
+    background: white;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.welcome-content h2 {
+    color: #667eea;
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+.welcome-content p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.welcome-content ul {
+    text-align: left;
+    display: inline-block;
+    margin: 20px 0;
+}
+
+.welcome-content li {
+    font-size: 1.1em;
+    margin: 10px 0;
+    color: #555;
+}
+
+/* Scenario Box */
+.scenario-box {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.scenario-box h2 {
+    color: #667eea;
+    margin-bottom: 15px;
+}
+
+.scenario-text {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.team-mood {
+    background: #f0f4ff;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+}
+
+.team-mood strong {
+    color: #667eea;
+}
+
+#teamPersonality {
+    color: #764ba2;
+    font-weight: 500;
+}
+
+/* Choices Box */
+.choices-box {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.choices-box h3 {
+    color: #667eea;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.choice-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.choice-btn {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.choice-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-color: #667eea;
+}
+
+.choice-btn:active {
+    transform: translateY(-1px);
+}
+
+.choice-title {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.choice-description {
+    font-size: 0.95em;
+    color: #666;
+}
+
+/* Results Screen */
+.reaction-box,
+.metrics-box,
+.feedback-box,
+.suggestion-box {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.reaction-box h2,
+.metrics-box h3,
+.feedback-box h3,
+.suggestion-box h3 {
+    color: #667eea;
+    margin-bottom: 15px;
+}
+
+.reaction-text {
+    font-size: 1.15em;
+    line-height: 1.6;
+    color: #555;
+    font-style: italic;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+}
+
+/* Metrics */
+.metric {
+    margin-bottom: 20px;
+}
+
+.metric-label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+    font-size: 1.05em;
+}
+
+.metric-bar-container {
+    background: #e0e0e0;
+    border-radius: 10px;
+    height: 25px;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.metric-bar {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 1s ease-out, background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+    color: white;
+    font-weight: bold;
+}
+
+.metric-bar.high {
+    background: linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
+}
+
+.metric-bar.medium {
+    background: linear-gradient(90deg, #f2994a 0%, #f2c94c 100%);
+}
+
+.metric-bar.low {
+    background: linear-gradient(90deg, #eb3349 0%, #f45c43 100%);
+}
+
+.metric-value {
+    font-weight: 600;
+    color: #667eea;
+    font-size: 1.1em;
+}
+
+.overall-score {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 2px solid #e0e0e0;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.score-value {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #667eea;
+    margin: 0 10px;
+}
+
+.score-rating {
+    font-size: 1.2em;
+}
+
+/* Feedback and Suggestions */
+.feedback-text,
+.suggestion-text {
+    font-size: 1.05em;
+    line-height: 1.8;
+    color: #555;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.suggestion-box {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-left: 4px solid #11998e;
+}
+
+/* Buttons */
+.btn {
+    padding: 15px 35px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.btn-secondary {
+    background: white;
+    color: #667eea;
+    border: 2px solid #667eea;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+}
+
+.btn-secondary:hover {
+    background: #667eea;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Summary Screen */
+.summary-content {
+    background: white;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.summary-content h2 {
+    color: #667eea;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 2em;
+}
+
+.summary-stats {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.summary-stat {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 1.1em;
+}
+
+.summary-stat:last-child {
+    border-bottom: none;
+}
+
+.summary-stat strong {
+    color: #333;
+}
+
+.summary-stat span {
+    color: #667eea;
+    font-weight: 600;
+}
+
+.best-score {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2em;
+    }
+
+    .subtitle {
+        font-size: 1em;
+    }
+
+    .welcome-content,
+    .scenario-box,
+    .choices-box,
+    .summary-content {
+        padding: 25px;
+    }
+
+    .choice-btn {
+        padding: 15px;
+    }
+
+    .choice-title {
+        font-size: 1.1em;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .action-buttons .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .header h1 {
+        font-size: 1.5em;
+    }
+
+    .welcome-content h2 {
+        font-size: 1.5em;
+    }
+
+    .scenario-box,
+    .choices-box,
+    .reaction-box,
+    .metrics-box,
+    .feedback-box,
+    .suggestion-box {
+        padding: 20px;
+    }
+}
