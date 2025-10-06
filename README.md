@@ -76,7 +76,7 @@ Select from five different communication styles:
 
 1. **Navigate to the console folder:**
    ```bash
-   cd "d:\Data Perso Adnane\Coding\VSCodeProject\Soft Skills Lab\console"
+   cd console
    ```
 
 2. **Run the application:**
@@ -95,14 +95,14 @@ Select from five different communication styles:
 #### Basic Version
 1. **Open the basic version:**
    ```bash
-   cd "d:\Data Perso Adnane\Coding\VSCodeProject\Soft Skills Lab\web"
+   cd web
    start index.html
    ```
 
 #### Advanced Version (Recommended) ⭐
 1. **Open the advanced version with full features:**
    ```bash
-   cd "d:\Data Perso Adnane\Coding\VSCodeProject\Soft Skills Lab\web"
+   cd web
    start index-advanced.html
    ```
 
@@ -145,14 +145,20 @@ Each simulation generates three key metrics:
 
 ```
 Soft Skills Lab/
-├── README.md                 # This file
-├── console/                  # C# Console application
-│   ├── Program.cs           # Main simulation logic
-│   └── SoftSkillsLab.csproj # Project file
-└── web/                     # Web-based application
-    ├── index.html           # Main HTML page
-    ├── styles.css           # Styling
-    └── script.js            # JavaScript logic
+├── README.md                    # This file
+├── ADVANCED_FEATURES.md         # Detailed feature documentation
+├── QUICK_START.md               # Beginner's guide
+├── PROJECT_SUMMARY.md           # Complete project summary
+├── console/                     # C# Console application
+│   ├── Program.cs              # Main simulation logic
+│   └── SoftSkillsLab.csproj    # Project file
+└── web/                        # Web-based application
+    ├── index.html              # Basic version
+    ├── styles.css              # Basic styling
+    ├── script.js               # Basic logic
+    ├── index-advanced.html     # Advanced version ⭐
+    ├── styles-advanced.css     # Advanced styling
+    └── script-advanced.js      # Advanced logic
 ```
 
 ## 🔧 Technical Details
