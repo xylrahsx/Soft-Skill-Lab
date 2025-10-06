@@ -203,6 +203,7 @@ By using this simulator, users will:
 ✅ **Detailed Feedback**: Turn-by-turn analysis of your communication choices  
 ✅ **Progress Dashboard**: Quick overview of your learning journey with key metrics  
 ✅ **Data Persistence**: Your progress is saved locally and persists across sessions  
+✅ **JSON Export/Import**: Backup your progress or transfer it between devices with JSON file export/import  
 
 ## 🤝 Contributing
 
