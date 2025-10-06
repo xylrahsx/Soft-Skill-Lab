@@ -1067,3 +1067,185 @@ function average(arr) {
 function capitalizeFirst(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
+
+// ==================== JSON EXPORT/IMPORT FUNCTIONS ====================
+
+/**
+ * Export progress data to JSON file for backup or transfer
+ */
+function exportProgressToJSON() {
+    try {
+        // Prepare data for export
+        const exportData = {
+            exportDate: new Date().toISOString(),
+            version: "1.0",
+            appName: "Soft Skills Lab - Advanced",
+            data: sessionData
+        };
+
+        // Convert to JSON string with formatting
+        const jsonString = JSON.stringify(exportData, null, 2);
+
+        // Create blob and download link
+        const blob = new Blob([jsonString], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        
+        // Generate filename with timestamp
+        const timestamp = new Date().toISOString().split('T')[0];
+        link.download = `soft-skills-lab-progress-${timestamp}.json`;
+        link.href = url;
+        
+        // Trigger download
+        document.body.appendChild(link);
+        link.click();
+        
+        // Cleanup
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+
+        // Show success notification
+        showNotification('✅ Progress exported successfully!', 'success');
+        
+        console.log('Progress exported successfully');
+    } catch (error) {
+        console.error('Error exporting progress:', error);
+        showNotification('❌ Failed to export progress', 'error');
+    }
+}
+
+/**
+ * Import progress data from JSON file
+ */
+function importProgressFromJSON(event) {
+    const file = event.target.files[0];
+    
+    if (!file) {
+        return;
+    }
+
+    // Validate file type
+    if (!file.name.endsWith('.json')) {
+        showNotification('❌ Please select a valid JSON file', 'error');
+        return;
+    }
+
+    const reader = new FileReader();
+    
+    reader.onload = function(e) {
+        try {
+            const importedData = JSON.parse(e.target.result);
+            
+            // Validate data structure
+            if (!importedData.data || !importedData.appName || importedData.appName !== "Soft Skills Lab - Advanced") {
+                showNotification('❌ Invalid file format', 'error');
+                return;
+            }
+
+            // Confirm before overwriting
+            const confirmed = confirm(
+                `Import progress from ${new Date(importedData.exportDate).toLocaleDateString()}?\n\n` +
+                `This will replace your current progress:\n` +
+                `- Current Simulations: ${sessionData.totalSimulations}\n` +
+                `- Current Streak: ${sessionData.currentStreak} days\n` +
+                `- Current Achievements: ${sessionData.unlockedAchievements.length}\n\n` +
+                `With imported data:\n` +
+                `- Imported Simulations: ${importedData.data.totalSimulations}\n` +
+                `- Imported Streak: ${importedData.data.currentStreak} days\n` +
+                `- Imported Achievements: ${importedData.data.unlockedAchievements.length}`
+            );
+
+            if (!confirmed) {
+                showNotification('ℹ️ Import cancelled', 'info');
+                return;
+            }
+
+            // Import data
+            sessionData = importedData.data;
+            saveSessionData();
+            
+            // Refresh UI
+            updateDashboard();
+            updateAnalytics();
+            displayAchievements();
+            updateLearningPath();
+            
+            showNotification('✅ Progress imported successfully!', 'success');
+            console.log('Progress imported successfully');
+            
+        } catch (error) {
+            console.error('Error importing progress:', error);
+            showNotification('❌ Failed to import progress. Invalid file format.', 'error');
+        }
+    };
+    
+    reader.onerror = function() {
+        showNotification('❌ Failed to read file', 'error');
+    };
+    
+    reader.readAsText(file);
+    
+    // Reset file input
+    event.target.value = '';
+}
+
+/**
+ * Show notification message to user
+ */
+function showNotification(message, type = 'info') {
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.textContent = message;
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 15px 25px;
+        background: ${type === 'success' ? '#11998e' : type === 'error' ? '#eb3349' : '#667eea'};
+        color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        z-index: 10000;
+        font-weight: 600;
+        animation: slideIn 0.3s ease;
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Auto remove after 3 seconds
+    setTimeout(() => {
+        notification.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => {
+            document.body.removeChild(notification);
+        }, 300);
+    }, 3000);
+}
+
+// Add CSS animations for notifications
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideIn {
+        from {
+            transform: translateX(400px);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes slideOut {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(400px);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
+
